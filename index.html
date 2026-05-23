@@ -354,7 +354,7 @@ footer {
 </head>
 <body>
 
-<nav>
+<nav id="site-nav">
   <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
     <img src="logo.svg" alt="RHoE" style="height:32px;width:auto;"/>
     <span class="nav-logo">Resonant Hierarchy</span>
@@ -483,18 +483,7 @@ footer {
   </div>
 </section>
 
-<footer>
-  <p class="footer-quote">"The universe is not only stranger than we suppose, but stranger than we can suppose."<br><span style="font-size:17px;font-style:normal">— J.B.S. Haldane</span></p>
-  <p class="footer-meta">Resonant Hierarchy · A Conceptual Hypothesis · 2026 · Work in Progress</p>
-  <p style="font-family:'Inter',sans-serif;font-size:12px;color:#8a8aaa;margin-top:12px;line-height:1.8;">
-    Created by <strong style="color:#4a4a6a;">Dement Dmitriy</strong> · Independent researcher<br>
-    This site exists to draw attention to science and the nature of the universe.
-  </p>
-  <div style="margin-top:32px;">
-    <p style="font-family:'Inter',sans-serif;font-size:13px;color:#8a8aaa;margin-bottom:16px;">If this work resonates with you, you can support it</p>
-    <a href="https://ko-fi.com/hierarchyofeverything" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:12px 28px;background:#4a3cc8;color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.12em;text-decoration:none;border-radius:8px;">☕ Support this research</a>
-  </div>
-</footer>
+<footer id="site-footer"></footer>
 
 <script>
 const levels = [
@@ -718,5 +707,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   btn.disabled = false;
 });
 </script>
+<script src="nav.js"></script>
+<script src="footer.js"></script>
 </body>
 </html>
