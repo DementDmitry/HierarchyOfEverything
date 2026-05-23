@@ -199,6 +199,53 @@ footer a { color: var(--accent); text-decoration: none; }
     <iframe id='kofiframe' src='https://ko-fi.com/hierarchyofeverything/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:#f9f9f9;' height='712' title='hierarchyofeverything'></iframe>
   </div>
   <p class="pay-note" style="margin-top:16px;">Secure payments via Ko-fi · Card · Apple Pay · Google Pay · No account required</p>
+  <div style="margin-top:48px;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.2em;color:#8a8aaa;text-transform:uppercase;margin-bottom:24px;text-align:center;">Or donate with crypto</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+      <!-- BTC -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;">
+        <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;color:#f7931a;text-transform:uppercase;margin-bottom:10px;font-weight:500;">₿ Bitcoin</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4a4a6a;word-break:break-all;margin-bottom:12px;line-height:1.6;">bc1qsjepal8glgekj5m9jvmgned6xc3wk6hdu87lz5</div>
+        <a href="https://link.trustwallet.com/send?address=bc1qsjepal8glgekj5m9jvmgned6xc3wk6hdu87lz5&asset=c0" target="_blank" style="font-family:'Inter',sans-serif;font-size:12px;color:#4a3cc8;text-decoration:none;border:1px solid var(--border);padding:5px 12px;border-radius:16px;">Open in Trust Wallet</a>
+      </div>
+
+      <!-- ETH -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;">
+        <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;color:#627eea;text-transform:uppercase;margin-bottom:10px;font-weight:500;">Ξ Ethereum</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4a4a6a;word-break:break-all;margin-bottom:12px;line-height:1.6;">0xD150495CC8897B9FBFE5e1C41eD38f2980F2b28b</div>
+        <a href="https://link.trustwallet.com/send?asset=c60&address=0xD150495CC8897B9FBFE5e1C41eD38f2980F2b28b" target="_blank" style="font-family:'Inter',sans-serif;font-size:12px;color:#4a3cc8;text-decoration:none;border:1px solid var(--border);padding:5px 12px;border-radius:16px;">Open in Trust Wallet</a>
+      </div>
+
+      <!-- USDT -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;">
+        <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;color:#26a17b;text-transform:uppercase;margin-bottom:10px;font-weight:500;">₮ USDT (ERC-20)</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4a4a6a;word-break:break-all;margin-bottom:12px;line-height:1.6;">0xD150495CC8897B9FBFE5e1C41eD38f2980F2b28b</div>
+        <a href="https://link.trustwallet.com/send?address=0xD150495CC8897B9FBFE5e1C41eD38f2980F2b28b&asset=c60_t0xdAC17F958D2ee523a2206206994597C13D831ec7" target="_blank" style="font-family:'Inter',sans-serif;font-size:12px;color:#4a3cc8;text-decoration:none;border:1px solid var(--border);padding:5px 12px;border-radius:16px;">Open in Trust Wallet</a>
+      </div>
+
+      <!-- XRP -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;">
+        <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;color:#346aa9;text-transform:uppercase;margin-bottom:10px;font-weight:500;">✦ XRP</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4a4a6a;word-break:break-all;margin-bottom:12px;line-height:1.6;">rNcEfgBNkYjrAwamM2G1YvBBSuZZ1vAhyK</div>
+        <a href="https://link.trustwallet.com/send?address=rNcEfgBNkYjrAwamM2G1YvBBSuZZ1vAhyK&asset=c144" target="_blank" style="font-family:'Inter',sans-serif;font-size:12px;color:#4a3cc8;text-decoration:none;border:1px solid var(--border);padding:5px 12px;border-radius:16px;">Open in Trust Wallet</a>
+      </div>
+
+    </div>
+    <p style="font-family:'Inter',sans-serif;font-size:12px;color:#8a8aaa;text-align:center;margin-top:16px;">Click address to copy · or open directly in Trust Wallet</p>
+  </div>
+  <script>
+  document.querySelectorAll('[data-copy]').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function() {
+      navigator.clipboard.writeText(this.textContent.trim());
+      const orig = this.style.color;
+      this.style.color = '#1a7a6e';
+      setTimeout(() => this.style.color = orig, 1000);
+    });
+  });
+  </script>
 </div>
 
 <footer id="site-footer"></footer>
