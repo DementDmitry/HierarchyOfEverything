@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="140" viewBox="0 0 480 140">
+  <defs>
+    <radialGradient id="fade" cx="50%" cy="72%" r="32%">
+      <stop offset="0%" stop-color="#fafaf8" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#fafaf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 11 rings cx=70 cy=62 — compact to fit 140px height -->
+  <circle cx="70" cy="62" r="56" fill="none" stroke="#ede9f8" stroke-width="0.8"/>
+  <circle cx="70" cy="62" r="51" fill="none" stroke="#ddd4f2" stroke-width="0.85"/>
+  <circle cx="70" cy="62" r="46" fill="none" stroke="#cec0ec" stroke-width="0.9"/>
+  <circle cx="70" cy="62" r="41" fill="none" stroke="#beace6" stroke-width="1"/>
+  <circle cx="70" cy="62" r="36" fill="none" stroke="#ae98e0" stroke-width="1.1"/>
+  <circle cx="70" cy="62" r="31" fill="none" stroke="#9e84da" stroke-width="1.2"/>
+  <circle cx="70" cy="62" r="26" fill="none" stroke="#8e70d4" stroke-width="1.3"/>
+  <circle cx="70" cy="62" r="21" fill="none" stroke="#7e5cce" stroke-width="1.5"/>
+  <circle cx="70" cy="62" r="16" fill="none" stroke="#6e48c8" stroke-width="1.7"/>
+  <circle cx="70" cy="62" r="11" fill="none" stroke="#5e38c0" stroke-width="1.9"/>
+  <circle cx="70" cy="62" r="6"  fill="none" stroke="#4a3cc8" stroke-width="2.1"/>
+
+  <!-- Center dot -->
+  <circle cx="70" cy="62" r="2.5" fill="#4a3cc8"/>
+
+  <!-- Fade under P11=P0 -->
+  <ellipse cx="70" cy="96" rx="38" ry="18" fill="url(#fade)"/>
+
+  <!-- P₁₁ = P₀ -->
+  <text x="70" y="103" font-family="Georgia, serif" font-size="10" font-style="italic" fill="#4a3cc8" text-anchor="middle">P₁₁ = P₀</text>
+
+  <!-- Divider line -->
+  <line x1="144" y1="18" x2="144" y2="118" stroke="#e0ddf5" stroke-width="1"/>
+
+  <!-- RHoE wordmark -->
+  <text x="162" y="82" font-family="Georgia, serif" font-size="52" font-style="italic" fill="#1a1a2e" letter-spacing="-1">RHo<tspan fill="#4a3cc8">E</tspan></text>
+
+  <!-- A Resonant Hierarchy of Everything -->
+  <text x="164" y="100" font-family="Georgia, serif" font-size="11" fill="#4a4a6a">A Resonant Hierarchy of Everything</text>
+
+  <!-- ONE FORMULA · ALL SCALES -->
+  <text x="164" y="116" font-family="Arial, sans-serif" font-size="9" fill="#8a8aaa" letter-spacing="2">ONE FORMULA · ALL SCALES</text>
+</svg>
