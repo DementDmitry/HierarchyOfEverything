@@ -19,6 +19,7 @@
   --border: rgba(74,60,200,0.12);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
+nav:empty { visibility:hidden; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -162,6 +163,8 @@ footer a { color: var(--accent); text-decoration: none; }
   .payment-options { grid-template-columns: 1fr; }
 }
 </style>
+<script src="nav.js" defer></script>
+<script src="footer.js" defer></script>
 </head>
 <body>
 
@@ -200,7 +203,5 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <footer id="site-footer"></footer>
 
-<script src="nav.js"></script>
-<script src="footer.js"></script>
 </body>
 </html>
