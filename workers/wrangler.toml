@@ -1,0 +1,10 @@
+name = "contact-hierarchyofeverything"
+main = "contact-worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# RESEND_API_KEY is set as a secret in Cloudflare dashboard, not here
+
+[[routes]]
+pattern = "contact.hierarchyofeverything.com"
+zone_name = "hierarchyofeverything.com"
