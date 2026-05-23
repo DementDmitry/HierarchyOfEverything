@@ -340,6 +340,10 @@ footer {
 }
 
 /* RESP */
+@media(max-width:960px) {
+  .hero-grid { grid-template-columns:1fr !important; text-align:center !important; }
+  .hero-grid > div { text-align:center !important; padding:0 !important; }
+}
 @media(max-width:860px) {
   .results-split { grid-template-columns:1fr; }
   .open-grid { grid-template-columns:1fr 1fr; }
@@ -371,8 +375,34 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">Conceptual Hypothesis · 2026</div>
-  <img src="logo/logo_square.svg" alt="A Resonant Hierarchy of Everything" style="max-width:320px;width:70%;margin-bottom:8px;"/>
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:48px;align-items:center;width:100%;max-width:1100px;margin:0 auto;">
+
+    <!-- LEFT: quote -->
+    <div style="text-align:right;padding-right:16px;">
+      <p style="font-family:'Lora',Georgia,serif;font-size:19px;font-style:italic;color:#4a4a6a;line-height:1.8;margin-bottom:16px;">
+        "The most incomprehensible thing about the universe is that it is comprehensible."
+      </p>
+      <p style="font-family:'Inter',sans-serif;font-size:13px;color:#8a8aaa;letter-spacing:0.1em;">— Albert Einstein</p>
+    </div>
+
+    <!-- CENTER: logo -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+      <div class="hero-tag" style="margin-bottom:24px;">Conceptual Hypothesis · 2026</div>
+      <img src="logo/logo_square.svg" alt="A Resonant Hierarchy of Everything" style="width:300px;max-width:300px;"/>
+    </div>
+
+    <!-- RIGHT: annotation -->
+    <div style="text-align:left;padding-left:16px;">
+      <p style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.2em;color:#4a3cc8;text-transform:uppercase;margin-bottom:12px;">What this is</p>
+      <p style="font-family:'Lora',Georgia,serif;font-size:17px;color:#4a4a6a;line-height:1.8;">
+        A conceptual framework proposing that all levels of reality — from subatomic vibrations to the universe itself — emerge through one recursive formula.
+      </p>
+      <p style="font-family:'Lora',Georgia,serif;font-size:17px;color:#4a4a6a;line-height:1.8;margin-top:12px;">
+        Not a finished theory. An invitation to think differently about the structure of everything.
+      </p>
+    </div>
+
+  </div>
   <div class="hero-formula">P<sub>n+1</sub> = F(P<sub>n</sub>, C<sub>n</sub>, E<sub>n</sub>)</div>
   <div class="hero-scroll">↓ explore</div>
 </section>
