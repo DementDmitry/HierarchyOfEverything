@@ -14,4 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <a href="donate.html" style="color:#fff;background:var(--accent);border:1px solid var(--accent);padding:6px 14px;border-radius:20px;font-size:12px;letter-spacing:0.1em;text-decoration:none;font-family:'Inter',sans-serif;">☕ Support</a>
     </div>
   `;
+
+  // Show page only after nav is ready
+  document.body.classList.add('ready');
 });
