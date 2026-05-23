@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   nav.innerHTML = `
     <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <img src="logo-icon.svg" alt="logo" style="height:36px;width:36px;"/>
+      <img src="logo/logo-icon.svg" alt="logo" style="height:36px;width:36px;"/>
       <span style="font-family:'Lora',Georgia,serif;font-size:15px;font-style:italic;color:#1a1a2e;letter-spacing:0.01em;">A Resonant Hierarchy <span style="color:#4a3cc8;">of Everything</span></span>
     </a>
     <div class="nav-links">
