@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Resonant Hierarchy of Everything — Paper</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf8;
+  --bg2: #f3f2ee;
+  --bg3: #ffffff;
+  --accent: #4a3cc8;
+  --accent2: #1a7a6e;
+  --accent3: #b8860b;
+  --text: #1a1a2e;
+  --text2: #4a4a6a;
+  --text3: #8a8aaa;
+  --border: rgba(74,60,200,0.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top:0; width:100%; z-index:100;
+  padding: 16px 48px;
+  display:flex; align-items:center; justify-content:space-between;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight:500; letter-spacing: 0.15em;
+  color: var(--accent); text-transform:uppercase;
+  text-decoration: none;
+}
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--text2);
+  text-decoration:none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-back {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; color: var(--accent);
+  text-decoration: none; letter-spacing: 0.1em;
+  border: 1px solid rgba(74,60,200,0.25);
+  padding: 6px 14px; border-radius: 20px;
+  transition: background 0.2s;
+}
+.nav-back:hover { background: rgba(74,60,200,0.06); }
+
+/* PAPER LAYOUT */
+.paper-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 48px 100px;
+}
+
+/* HEADER */
+.paper-header {
+  text-align: center;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+}
+.paper-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.25em;
+  color: var(--accent); text-transform:uppercase;
+  margin-bottom: 24px;
+}
+.paper-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 400; line-height: 1.2;
+  margin-bottom: 12px; color: var(--text);
+}
+.paper-title em { font-style: italic; color: var(--accent); }
+.paper-subtitle {
+  font-size: 20px; font-style: italic;
+  color: var(--text2); margin-bottom: 36px;
+  line-height: 1.5;
+}
+.paper-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--text3);
+  line-height: 2;
+}
+.paper-meta strong { color: var(--text2); font-weight: 500; }
+
+/* ABSTRACT */
+.abstract {
+  background: var(--bg2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 28px 32px;
+  margin-bottom: 60px;
+}
+.abstract-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.abstract p {
+  font-size: 17px; color: var(--text2);
+  line-height: 1.8; font-style: italic;
+}
+
+/* TOC */
+.toc {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 60px;
+}
+.toc-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--text3); text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.toc ol {
+  list-style: none; counter-reset: toc;
+}
+.toc ol li {
+  counter-increment: toc;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 16px;
+}
+.toc ol li:last-child { border-bottom: none; }
+.toc ol li::before {
+  content: counter(toc) ". ";
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; color: var(--accent);
+  margin-right: 8px;
+}
+.toc ol li a {
+  color: var(--text2); text-decoration: none;
+  transition: color 0.2s;
+}
+.toc ol li a:hover { color: var(--accent); }
+
+/* SECTIONS */
+.paper-section {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
+}
+.paper-section:last-child { border-bottom: none; }
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--accent);
+  letter-spacing: 0.15em; margin-bottom: 8px;
+}
+.section-heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 400; line-height: 1.25;
+  margin-bottom: 32px; color: var(--text);
+}
+.section-heading em { font-style: italic; color: var(--accent); }
+
+.subsection-heading {
+  font-size: 20px; font-weight: 500;
+  margin: 36px 0 16px; color: var(--text);
+}
+
+p.body {
+  font-size: 19px; color: var(--text2);
+  margin-bottom: 24px; line-height: 1.85;
+}
+p.body strong { color: var(--text); font-weight: 500; }
+p.body em { font-style: italic; }
+
+/* FORMULA BLOCK */
+.formula {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 32px 0;
+  box-shadow: 0 2px 12px rgba(74,60,200,0.05);
+}
+.formula-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.18em;
+  color: var(--text3); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.formula-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px; color: var(--accent2);
+  line-height: 2.2; white-space: pre-wrap;
+}
+.formula-note {
+  font-size: 16px; color: var(--text2);
+  font-style: italic; margin-top: 16px;
+  padding-top: 16px; border-top: 1px solid var(--border);
+  line-height: 1.7;
+}
+
+/* RESULT TABLE */
+.result-table {
+  width: 100%; border-collapse: collapse;
+  margin: 32px 0; font-size: 16px;
+}
+.result-table th {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text3);
+  padding: 12px 16px; text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+.result-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2); vertical-align: top;
+}
+.result-table td:first-child { color: var(--text); font-weight: 500; }
+.result-table td code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; color: var(--accent);
+}
+.result-table tr:last-child td { border-bottom: none; }
+.badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; padding: 3px 10px; border-radius: 12px;
+  font-weight: 500; white-space: nowrap;
+}
+.badge-solid { background: rgba(26,122,110,0.1); color: var(--accent2); }
+.badge-obs   { background: rgba(184,134,11,0.1);  color: var(--accent3); }
+.badge-open  { background: rgba(74,60,200,0.08);  color: var(--accent); }
+
+/* CALLOUT */
+.callout {
+  border-left: 3px solid var(--accent3);
+  padding: 20px 28px; margin: 32px 0;
+  background: rgba(184,134,11,0.04);
+  border-radius: 0 8px 8px 0;
+}
+.callout p { font-size: 17px; color: var(--text2); font-style: italic; line-height: 1.75; }
+.callout p strong { color: var(--text); font-style: normal; }
+
+/* OPEN QUESTIONS */
+.open-list { list-style: none; margin: 24px 0; }
+.open-list li {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.open-list li:last-child { border-bottom: none; }
+.open-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--accent3);
+  flex-shrink: 0; padding-top: 3px;
+  letter-spacing: 0.1em;
+}
+.open-text strong {
+  display: block; font-size: 18px; font-weight: 500;
+  color: var(--text); margin-bottom: 6px;
+}
+.open-text span { font-size: 16px; color: var(--text2); line-height: 1.7; }
+
+/* FOOTER */
+.paper-footer {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.paper-footer p {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--text3);
+  line-height: 2;
+}
+.paper-footer a { color: var(--accent); text-decoration: none; }
+
+@media(max-width:640px) {
+  .paper-wrap { padding: 100px 20px 80px; }
+  nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Resonant Hierarchy</a>
+  <div class="nav-links">
+    <a href="index.html#intro">Idea</a>
+    <a href="index.html#levels">Levels</a>
+    <a href="index.html#results">Results</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="nav-back" href="index.html">← Back to site</a>
+  </div>
+</nav>
+
+<div class="paper-wrap">
+
+  <!-- HEADER -->
+  <div class="paper-header">
+    <div class="paper-tag">Conceptual Hypothesis · Preprint · 2025</div>
+    <h1 class="paper-title">A <em>Resonant Hierarchy</em> of Everything:<br>One Recursive Formula Across All Scales</h1>
+    <p class="paper-subtitle">A conceptual framework in which every level of physical reality<br>emerges from the one below through a single resonance principle</p>
+    <div class="paper-meta">
+      <strong>D. Dement</strong><br>
+      Independent researcher · hierarchyofeverything.com<br>
+      Version 1.0 · 2025 · Work in progress
+    </div>
+  </div>
+
+  <!-- ABSTRACT -->
+  <div class="abstract">
+    <div class="abstract-label">Abstract</div>
+    <p>We present a conceptual framework — the Resonant Hierarchy — in which all levels of physical organisation from subatomic vibrations to the large-scale structure of the universe are described by a single recursive formula P<sub>n+1</sub> = F(P<sub>n</sub>, C<sub>n</sub>, E<sub>n</sub>), where P, C, E denote objects, connections, and emergent properties at each level. The emergent properties at level n are derived from the connections of the level below via E<sub>n</sub> = ∂C<sub>n−1</sub>/∂P<sub>n</sub>. From this structure, several results follow without free parameters: the minimum number of quarks in a proton (three, from ∑D = 0 in three dimensions), the Pauli exclusion principle (from phase antisymmetry), and the phase transitions of water (from T · ΔS = ΔH). Additionally, we report numerical observations relating particle masses and coupling constants with 94–99% accuracy that require independent verification. The framework is conceptual; rigorous Lagrangian formalisation remains an open problem.</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#s1">Introduction</a></li>
+      <li><a href="#s2">The Recursive Structure</a></li>
+      <li><a href="#s3">The Resonance Function F</a></li>
+      <li><a href="#s4">Structural Results</a></li>
+      <li><a href="#s5">Numerical Observations</a></li>
+      <li><a href="#s6">The Twelve Levels</a></li>
+      <li><a href="#s7">Open Questions</a></li>
+      <li><a href="#s8">Discussion</a></li>
+    </ol>
+  </div>
+
+  <!-- §1 INTRODUCTION -->
+  <div class="paper-section" id="s1">
+    <div class="section-number">§ 1</div>
+    <h2 class="section-heading">Introduction</h2>
+
+    <p class="body">Modern physics describes nature through separate theories at separate scales: quantum mechanics governs the very small, general relativity governs the very large, thermodynamics governs the intermediate. Each is extraordinarily accurate within its domain. Their mutual incompatibility at boundaries — most acutely at the interface of quantum mechanics and gravity — remains one of the central unsolved problems in theoretical physics.</p>
+
+    <p class="body">A second class of puzzles concerns unexplained numerical coincidences: why the fine structure constant α ≈ 1/137, why there are exactly three generations of fermions, why the Koide formula for lepton masses holds to 99.97% accuracy with no known mechanism. These are not derivable from the Standard Model; they are inputs to it.</p>
+
+    <p class="body">We propose that both classes of problems may have a common origin: the absence of a framework that treats all levels of organisation as instances of the same recursive structure. The present paper introduces such a framework — the <strong>Resonant Hierarchy</strong> — not as a complete theory but as a conceptual hypothesis with concrete structural results and testable numerical predictions.</p>
+
+    <div class="callout">
+      <p><strong>Scope of this paper.</strong> We distinguish sharply between two types of claim. <em>Structural results</em> follow from the logic of the model without free parameters. <em>Numerical observations</em> were found by exploration and are presented as patterns requiring independent verification. We do not conflate them.</p>
+    </div>
+
+    <p class="body">The paper is organised as follows. Section 2 defines the recursive structure. Section 3 specifies the resonance function F. Sections 4 and 5 present structural results and numerical observations respectively. Section 6 describes all twelve levels. Section 7 lists open questions. Section 8 discusses the status of the framework.</p>
+  </div>
+
+  <!-- §2 RECURSIVE STRUCTURE -->
+  <div class="paper-section" id="s2">
+    <div class="section-number">§ 2</div>
+    <h2 class="section-heading">The <em>Recursive Structure</em></h2>
+
+    <p class="body">At each level n of physical reality, we identify three elements:</p>
+
+    <div class="formula">
+      <div class="formula-label">Definition — Level Structure</div>
+      <div class="formula-body">Pₙ  —  objects at level n
+Cₙ  —  connections between objects at level n
+Eₙ  —  emergent properties of level-n objects</div>
+      <div class="formula-note">Examples: at level 2 (quarks), P₂ are quark fields, C₂ is the strong force (k·r), E₂ are colour charges (r, g, b). At level 4 (atoms), P₄ are nuclei and electrons, C₄ is electromagnetism, E₄ are shell structure and valence.</div>
+    </div>
+
+    <p class="body">The transition between levels is governed by a single function:</p>
+
+    <div class="formula">
+      <div class="formula-label">The Recursion</div>
+      <div class="formula-body">Pₙ₊₁ = F(Pₙ, Cₙ, Eₙ)</div>
+      <div class="formula-note">F is the probability amplitude for a stable resonance to form at level n+1 from the objects, connections, and emergent properties at level n. |F|² is the probability of formation. Only configurations where this is maximal persist — equivalent to the principle of least action applied across levels.</div>
+    </div>
+
+    <p class="body">The key structural claim concerns the origin of emergent properties. Rather than postulating E independently at each level, we propose:</p>
+
+    <div class="formula">
+      <div class="formula-label">Emergence Relation</div>
+      <div class="formula-body">Eₙ = ∂Cₙ₋₁ / ∂Pₙ</div>
+      <div class="formula-note">The emergent properties at level n are what the connections of the previous level distinguish about the current level's objects. Verified for levels 2–9: colour charge from direction vectors (level 2), mass and electric charge from confinement (level 3), Pauli exclusion from phase (level 4), temperature from vibrational amplitude (level 6), gravity from mass accumulation (level 7).</div>
+    </div>
+  </div>
+
+  <!-- §3 RESONANCE FUNCTION -->
+  <div class="paper-section" id="s3">
+    <div class="section-number">§ 3</div>
+    <h2 class="section-heading">The <em>Resonance Function</em> F</h2>
+
+    <p class="body">F decomposes into four factors, each enforcing a necessary condition for a stable resonance to form:</p>
+
+    <div class="formula">
+      <div class="formula-label">The Four Factors of F</div>
+      <div class="formula-body">F(Pₙ, Cₙ, Eₙ) =
+  e^{−(Δf)²/2σ²}        · frequency resonance
+  · e^{−|∑D|²/2σ²}      · directional closure
+  · σ(C − C_min)         · sufficient connectivity
+  · e^{iΦ}               · phase coherence</div>
+      <div class="formula-note">
+        <strong>Frequency resonance:</strong> objects must vibrate at compatible frequencies.<br>
+        <strong>Directional closure:</strong> the sum of direction vectors must approach zero — ∑D = 0. In 3D this forces a minimum of three components, predicting three quarks.<br>
+        <strong>Sufficient connectivity:</strong> connections must exceed a threshold for the configuration to be stable.<br>
+        <strong>Phase coherence:</strong> the phase factor e^{iΦ} implements Fermi–Dirac statistics. Two identical fermions with ΔΦ = 0 give F = 0 — the Pauli exclusion principle without postulate.
+      </div>
+    </div>
+  </div>
+
+  <!-- §4 STRUCTURAL RESULTS -->
+  <div class="paper-section" id="s4">
+    <div class="section-number">§ 4</div>
+    <h2 class="section-heading"><em>Structural</em> Results</h2>
+
+    <p class="body">The following results follow from the logic of the model. They do not involve free parameters or numerical fitting.</p>
+
+    <div class="subsection-heading">4.1 Three quarks from geometry</div>
+    <p class="body">The directional closure condition ∑D = 0 requires that the sum of direction vectors of all component vibrations vanishes. In three-dimensional space, the minimum number of non-collinear vectors that can form a rigid closed configuration is three — a triangle. This is a mathematical fact, independent of any physical assumption. The proton therefore has exactly three quarks.</p>
+
+    <div class="formula">
+      <div class="formula-label">Result 4.1</div>
+      <div class="formula-body">∑D = 0 in ℝ³  →  min(|{Pₙ}|) = 3</div>
+      <div class="formula-note">This is why there are three quarks in a proton and three colour charges. It follows from the dimensionality of space, not from SU(3) gauge theory (though the two descriptions are consistent).</div>
+    </div>
+
+    <div class="subsection-heading">4.2 Pauli exclusion from phase antisymmetry</div>
+    <p class="body">For two objects in identical quantum states, all parameters coincide — including phase Φ. The phase factor in F then gives:</p>
+
+    <div class="formula">
+      <div class="formula-label">Result 4.2</div>
+      <div class="formula-body">ΔΦ = 0  →  e^{iΔΦ} = 1,  F_antisym = 0</div>
+      <div class="formula-note">The antisymmetrised amplitude vanishes identically for two identical fermions. The Pauli exclusion principle is not a separate postulate — it is a consequence of phase coherence in F.</div>
+    </div>
+
+    <div class="subsection-heading">4.3 Phase transitions of water</div>
+    <p class="body">Temperature at level 6 is the mean amplitude of molecular vibrations. A phase transition occurs when thermal energy equals connection energy — the point where the resonance condition C = C<sub>min</sub> is exactly satisfied:</p>
+
+    <div class="formula">
+      <div class="formula-label">Result 4.3</div>
+      <div class="formula-body">T · ΔS = ΔH</div>
+      <div class="formula-note">Predicts boiling point of water at 373 K and freezing point at 273 K exactly, with no free parameters. The same condition applies to all substances.</div>
+    </div>
+
+    <div class="subsection-heading">4.4 Force carriers encode level properties</div>
+    <p class="body">The quantum of C<sub>n</sub> — the force carrier at level n — carries exactly the emergent properties E<sub>n</sub> of that level. This follows from the recursion: gluons carry colour (E₂), photons carry charge information (E₃), W/Z bosons carry isospin (E₄), gravitons couple to energy-momentum (E₇). This is not separately postulated; it is a consequence of the structure.</p>
+  </div>
+
+  <!-- §5 NUMERICAL OBSERVATIONS -->
+  <div class="paper-section" id="s5">
+    <div class="section-number">§ 5</div>
+    <h2 class="section-heading"><em>Numerical</em> Observations</h2>
+
+    <div class="callout">
+      <p><strong>Status of this section.</strong> The relationships below were found by numerical exploration — not derived from first principles. They are presented as observations that are consistent with the framework and may point toward deeper structure. They require independent verification before any stronger claim can be made.</p>
+    </div>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Observation</th>
+          <th>Formula</th>
+          <th>Accuracy</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fine structure constant</td>
+          <td><code>1/α ≈ 1152/(π·e)</code></td>
+          <td>98.5%</td>
+          <td><span class="badge badge-obs">Numerical</span></td>
+        </tr>
+        <tr>
+          <td>Weak coupling</td>
+          <td><code>αw = α·(e+2)</code></td>
+          <td>99.1%</td>
+          <td><span class="badge badge-obs">Numerical</span></td>
+        </tr>
+        <tr>
+          <td>Strong coupling</td>
+          <td><code>αs = α·9·(e+2)</code></td>
+          <td>97%</td>
+          <td><span class="badge badge-obs">Numerical</span></td>
+        </tr>
+        <tr>
+          <td>Generalised Koide (leptons)</td>
+          <td><code>k = 3/2·(1−|q|·αs)</code></td>
+          <td>99.97%</td>
+          <td><span class="badge badge-obs">Numerical</span></td>
+        </tr>
+        <tr>
+          <td>Generalised Koide (down quarks)</td>
+          <td><code>same formula, |q|=1/3</code></td>
+          <td>~95%</td>
+          <td><span class="badge badge-obs">Numerical</span></td>
+        </tr>
+        <tr>
+          <td>Lepton mass ratios</td>
+          <td><code>mτ·me = mμ²/4π</code></td>
+          <td>~98%</td>
+          <td><span class="badge badge-obs">Numerical</span></td>
+        </tr>
+        <tr>
+          <td>Higgs mass</td>
+          <td><code>M_H = M_Z·e^(1/3) ≈ 127 GeV</code></td>
+          <td>98.4%</td>
+          <td><span class="badge badge-obs">Numerical</span></td>
+        </tr>
+        <tr>
+          <td>Neutrino mass (prediction)</td>
+          <td><code>mν₁ ≈ 1.3×10⁻⁴ eV</code></td>
+          <td>Untested</td>
+          <td><span class="badge badge-open">Prediction</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="body">We note that with a sufficient number of mathematical constants (π, e, α, N<sub>colour</sub>) it is possible to approximate many numbers to high accuracy by construction. The observations above are not claimed to be derivations. They are regularities consistent with the framework that may or may not reflect deeper structure.</p>
+  </div>
+
+  <!-- §6 THE TWELVE LEVELS -->
+  <div class="paper-section" id="s6">
+    <div class="section-number">§ 6</div>
+    <h2 class="section-heading">The <em>Twelve Levels</em></h2>
+
+    <p class="body">The framework identifies twelve levels of physical organisation. The recursion closes at level 11, which is structurally identical to level 0.</p>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>n</th>
+          <th>Level</th>
+          <th>Objects P</th>
+          <th>Connections C</th>
+          <th>Properties E</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>Medium</td><td>none</td><td>none</td><td>pure potential</td></tr>
+        <tr><td>1</td><td>Primordial vibration</td><td>V = (f, A, D, Φ)</td><td>frequency resonance</td><td>4 parameters</td></tr>
+        <tr><td>2</td><td>Quarks & gluons</td><td>∑V, ∑D=0</td><td>k·r (confining)</td><td>colour (r,g,b)</td></tr>
+        <tr><td>3</td><td>Protons & neutrons</td><td>{P₂a, P₂b, P₂c}</td><td>k·e^(−r)</td><td>mass, charge</td></tr>
+        <tr><td>4</td><td>Atoms</td><td>nucleus + e⁻</td><td>k·q₁q₂/r²</td><td>shell, valence</td></tr>
+        <tr><td>5</td><td>Molecules</td><td>{P₄}</td><td>valence bonds</td><td>bond geometry</td></tr>
+        <tr><td>6</td><td>Matter</td><td>{P₅}×10²³</td><td>intermolecular</td><td>temperature, entropy</td></tr>
+        <tr><td>7</td><td>Planets & stars</td><td>{P₆}×10⁵⁷</td><td>G·m₁m₂/r²</td><td>gravity, depth</td></tr>
+        <tr><td>8</td><td>Galaxies</td><td>{P₇}×10¹¹</td><td>C₇ + C_dark</td><td>G_eff, structure</td></tr>
+        <tr><td>9</td><td>Universe</td><td>{P₈}×10¹²</td><td>−Λ·r</td><td>Λ = f(E₀)</td></tr>
+        <tr><td>10</td><td>Multiverse</td><td>{P₉, …}</td><td>Ω (very weak)</td><td>Ω</td></tr>
+        <tr><td>11</td><td>Closure</td><td>= P₀</td><td>0</td><td>0 = E₀</td></tr>
+      </tbody>
+    </table>
+
+    <p class="body">The closure P₁₁ = P₀ is a structural consequence of the recursion, not an additional postulate. Black holes are understood as objects that have reached closure locally — their interior corresponds to level 0, pure potential. Hawking radiation is the reverse process: the spontaneous generation of new level-1 vibrations at the horizon.</p>
+  </div>
+
+  <!-- §7 OPEN QUESTIONS -->
+  <div class="paper-section" id="s7">
+    <div class="section-number">§ 7</div>
+    <h2 class="section-heading">Open <em>Questions</em></h2>
+
+    <p class="body">We list the principal open problems honestly. These are not weaknesses of the hypothesis but its frontier.</p>
+
+    <ul class="open-list">
+      <li>
+        <div class="open-num">OQ·01</div>
+        <div class="open-text">
+          <strong>The origin of the first vibration</strong>
+          <span>E₁ = (f, A, D, Φ) is the single free input of the entire framework. The recursion cannot explain where the first vibration comes from — this is the cosmological initial condition problem in a new form.</span>
+        </div>
+      </li>
+      <li>
+        <div class="open-num">OQ·02</div>
+        <div class="open-text">
+          <strong>Exact derivation of α = 1/137</strong>
+          <span>Our approximation 1152/(π·e) ≈ 134.9 reaches 98.5%. The exact derivation of the fine structure constant from first principles remains open in this model and in all of modern physics.</span>
+        </div>
+      </li>
+      <li>
+        <div class="open-num">OQ·03</div>
+        <div class="open-text">
+          <strong>The Higgs scale</strong>
+          <span>Why the Higgs field has vacuum expectation value v = 246 GeV — the hierarchy problem — is not addressed by the framework in its current form.</span>
+        </div>
+      </li>
+      <li>
+        <div class="open-num">OQ·04</div>
+        <div class="open-text">
+          <strong>Dark matter particle identity</strong>
+          <span>The framework predicts dark matter as a resonance configuration with E₂ = 0, E₃(q) = 0, E₃(m) ≠ 0. The specific mass of such a particle does not emerge from the model.</span>
+        </div>
+      </li>
+      <li>
+        <div class="open-num">OQ·05</div>
+        <div class="open-text">
+          <strong>Exact generation masses</strong>
+          <span>The framework gives qualitative reasoning for three fermion generations via amplitude attenuation. Deriving the exact masses of the second and third generations from first principles remains open.</span>
+        </div>
+      </li>
+      <li>
+        <div class="open-num">OQ·06</div>
+        <div class="open-text">
+          <strong>Mathematical formalisation of F</strong>
+          <span>F is described conceptually. A rigorous Lagrangian formulation within quantum field theory — with renormalisability, Lorentz invariance, and exact equations of motion — is the essential next step for the framework to become a falsifiable physical theory.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- §8 DISCUSSION -->
+  <div class="paper-section" id="s8">
+    <div class="section-number">§ 8</div>
+    <h2 class="section-heading">Discussion</h2>
+
+    <p class="body">The Resonant Hierarchy is a conceptual framework, not a complete theory. The distinction matters. A conceptual framework organises known phenomena into a coherent picture and suggests where to look for new structure. A complete theory makes precise quantitative predictions derivable from a well-defined mathematical formalism. We have the former; the latter requires substantially more work.</p>
+
+    <p class="body">What the framework does offer is a unified perspective. The same three elements — objects, connections, emergent properties — appear at every scale. The same resonance condition governs every transition. Properties that are postulated independently in the Standard Model (colour charge, electric charge, spin, Pauli exclusion) emerge as structural consequences of the recursion.</p>
+
+    <p class="body">The numerical observations in Section 5 are striking but must be treated with caution. Mathematical constants like π and e are sufficiently rich that many numerical coincidences can be constructed post hoc. The observations presented here are consistent with the framework — but consistency is not derivation. The test of a physical theory is prediction, not pattern matching.</p>
+
+    <p class="body">The neutrino mass prediction (m<sub>ν₁</sub> ≈ 1.3 × 10⁻⁴ eV, from the seesaw relation interpreted as level-crossing resonance) is testable in principle by the KATRIN experiment. This is the clearest point of contact between the framework and ongoing experimental physics.</p>
+
+    <p class="body">We offer this work as an invitation — to physicists who may find the recursive structure worth formalising, and to anyone who has asked why the universe is organised the way it is.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="paper-footer">
+    <p>
+      D. Dement · Independent researcher · 2025<br>
+      <a href="index.html">hierarchyofeverything.com</a> · 
+      <a href="index.html#contact">Contact</a><br>
+      <br>
+      This is a preprint — a work in progress shared openly.<br>
+      Comments, critique, and collaboration welcome.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
