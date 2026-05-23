@@ -262,6 +262,65 @@ section { padding: 100px 48px; }
 .open-title { font-size:20px; margin-bottom:10px; }
 .open-desc { font-size:16px; color:var(--text2); line-height:1.7; }
 
+/* CONTACT */
+#contact { background: var(--bg); border-top: 1px solid var(--border); }
+.contact-wrap { max-width: 640px; margin: 0 auto; }
+.contact-intro {
+  font-size: 21px; color: var(--text2);
+  margin-bottom: 52px; font-style: italic; max-width: 540px;
+}
+.cf-field { margin-bottom: 24px; }
+.cf-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; letter-spacing: 0.18em;
+  color: var(--text3); text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cf-input, .cf-textarea {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 18px;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.cf-input:focus, .cf-textarea:focus {
+  border-color: rgba(74,60,200,0.45);
+  box-shadow: 0 0 0 3px rgba(74,60,200,0.07);
+}
+.cf-textarea { resize: vertical; line-height: 1.7; }
+.cf-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--accent);
+  border: none; border-radius: 8px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.15s;
+}
+.cf-btn:hover { background: #3a2db0; }
+.cf-btn:active { transform: scale(0.98); }
+.cf-btn:disabled { opacity: 0.6; cursor: default; }
+.cf-status {
+  margin-top: 20px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  display: none;
+  padding: 14px;
+  border-radius: 8px;
+}
+.cf-status.ok { background: rgba(26,122,110,0.08); color: var(--accent2); }
+.cf-status.err { background: rgba(200,60,60,0.07); color: #c03c3c; }
+
 /* FOOTER */
 footer {
   border-top:1px solid var(--border);
@@ -299,6 +358,7 @@ footer {
     <a href="#levels">Levels</a>
     <a href="#results">Results</a>
     <a href="#open">Open Questions</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -387,6 +447,32 @@ footer {
     <div class="section-title">The <em>Frontier</em></div>
     <p style="font-size:21px;color:var(--text2);max-width:700px">Honest science knows its limits. These questions remain open — in this model, and in modern physics. They are not weaknesses of the hypothesis. They are the next questions.</p>
     <div class="open-grid" id="openGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container contact-wrap">
+    <div class="section-tag">Contact</div>
+    <div class="section-title">Share Your <em>Thoughts</em></div>
+    <p class="contact-intro">Questions, critique, ideas — all welcome. This is a work in progress and every perspective matters.</p>
+
+    <form id="contactForm" novalidate>
+      <div class="cf-field">
+        <label class="cf-label" for="cf-name">Name</label>
+        <input class="cf-input" type="text" id="cf-name" placeholder="Your name" required>
+      </div>
+      <div class="cf-field">
+        <label class="cf-label" for="cf-email">Email</label>
+        <input class="cf-input" type="email" id="cf-email" placeholder="your@email.com" required>
+      </div>
+      <div class="cf-field">
+        <label class="cf-label" for="cf-message">Message</label>
+        <textarea class="cf-textarea" id="cf-message" rows="6" placeholder="Your thoughts, questions or critique…" required></textarea>
+      </div>
+      <button class="cf-btn" type="submit" id="cf-submit">Send Message</button>
+      <div class="cf-status" id="cf-status"></div>
+    </form>
   </div>
 </section>
 
@@ -576,6 +662,46 @@ document.getElementById('openGrid').innerHTML = opens.map(o => `
     <div class="open-title">${o.title}</div>
     <div class="open-desc">${o.desc}</div>
   </div>`).join('');
+
+// CONTACT FORM
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cf-submit');
+  const status = document.getElementById('cf-status');
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+
+  if (!name || !email || !message) return;
+
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  status.style.display = 'none';
+  status.className = 'cf-status';
+
+  try {
+    const res = await fetch('https://contact-form.hierarchyofeverything.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message })
+    });
+
+    if (res.ok) {
+      status.textContent = '✓ Message sent. Thank you — every response matters.';
+      status.classList.add('ok');
+      document.getElementById('contactForm').reset();
+    } else {
+      throw new Error();
+    }
+  } catch {
+    status.textContent = '✗ Something went wrong. Please try again or email directly.';
+    status.classList.add('err');
+  }
+
+  status.style.display = 'block';
+  btn.textContent = 'Send Message';
+  btn.disabled = false;
+});
 </script>
 </body>
 </html>
