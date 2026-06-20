@@ -32,8 +32,6 @@ body {
   line-height: 1.8;
   overflow-x: hidden;
 }
-
-/* NAV */
 nav {
   position: fixed; top:0; width:100%; z-index:100;
   padding: 16px 48px;
@@ -54,8 +52,6 @@ nav {
   text-decoration:none; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--accent); }
-
-/* HERO */
 .hero {
   min-height: 100vh;
   display:flex; flex-direction:column;
@@ -89,15 +85,24 @@ nav {
   color: var(--accent2); padding: 18px 40px;
   border: 1px solid rgba(26,122,110,0.25); border-radius:8px;
   background: rgba(26,122,110,0.05);
-  display:inline-block; margin-bottom:52px;
+  display:inline-block; margin-bottom:24px;
+}
+/* NEW: honest disclaimer in hero */
+.hero-disclaimer {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; color: var(--text3);
+  max-width: 480px; margin: 0 auto 40px;
+  line-height: 1.6;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg3);
 }
 .hero-scroll {
   font-family: 'Inter', sans-serif;
   font-size: 12px; letter-spacing: 0.2em;
   color: var(--text3); text-transform:uppercase;
 }
-
-/* SECTIONS */
 section { padding: 100px 48px; }
 .container { max-width: 900px; margin: 0 auto; }
 .section-tag {
@@ -110,8 +115,6 @@ section { padding: 100px 48px; }
   font-weight: 400; line-height: 1.15; margin-bottom: 48px;
 }
 .section-title em { font-style:italic; color:var(--accent); }
-
-/* INTRO */
 #intro { background: var(--bg); }
 .prose p {
   font-size: 21px; color: var(--text2);
@@ -124,7 +127,6 @@ section { padding: 100px 48px; }
   margin: 0.08em 0.12em 0 0;
   color:var(--accent); font-style:italic;
 }
-
 .callout {
   border-left:3px solid var(--accent);
   padding:24px 32px; margin:48px 0;
@@ -133,7 +135,17 @@ section { padding: 100px 48px; }
 }
 .callout p { font-size:20px; color:var(--text2); font-style:italic; line-height:1.75; }
 .callout p strong { color:var(--text); font-style:normal; }
-
+/* NEW: warning box */
+.warning-box {
+  border: 1px solid rgba(184,134,11,0.3);
+  background: rgba(184,134,11,0.03);
+  border-radius: 10px; padding: 20px 28px; margin: 40px 0;
+}
+.warning-box p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px; color: var(--text2); line-height: 1.7; margin:0;
+}
+.warning-box p strong { color: var(--accent3); }
 .formula-block {
   background: var(--bg3);
   border: 1px solid var(--border); border-radius:12px;
@@ -154,7 +166,6 @@ section { padding: 100px 48px; }
   margin-top:20px; padding-top:20px;
   border-top:1px solid var(--border);
 }
-
 .principles { list-style:none; margin:48px 0; }
 .principles li {
   padding:24px 0; border-bottom:1px solid var(--border);
@@ -165,11 +176,8 @@ section { padding: 100px 48px; }
   display:block; color:var(--text); font-weight:500;
   margin-bottom:6px; font-size:20px;
 }
-
-/* LEVELS */
 #levels { background:var(--bg2); }
 .levels-intro { font-size:21px; color:var(--text2); margin-bottom:60px; max-width:720px; }
-
 .level-item {
   background: var(--bg3);
   border: 1px solid var(--border); border-radius:12px;
@@ -190,14 +198,8 @@ section { padding: 100px 48px; }
 }
 .level-title-block { flex:1; }
 .level-name { font-size:22px; font-weight:400; margin-bottom:2px; }
-.level-sub {
-  font-family:'Inter',sans-serif;
-  font-size:13px; color:var(--text3);
-}
-.level-chevron {
-  font-size:12px; color:var(--text3);
-  transition:transform 0.3s; flex-shrink:0;
-}
+.level-sub { font-family:'Inter',sans-serif; font-size:13px; color:var(--text3); }
+.level-chevron { font-size:12px; color:var(--text3); transition:transform 0.3s; flex-shrink:0; }
 .level-chevron.open { transform:rotate(90deg); }
 .level-body {
   padding:0 28px 28px;
@@ -209,152 +211,65 @@ section { padding: 100px 48px; }
   font-family:'JetBrains Mono',monospace;
   font-size:14px; color:var(--text2); line-height:2;
   background:var(--bg2); padding:16px 20px;
-  border-radius:8px; margin-bottom:20px;
+  border-radius:8px; margin-bottom:8px;
+}
+/* NEW: note under pce */
+.level-pce-note {
+  font-family:'Inter',sans-serif;
+  font-size:12px; color:var(--text3); font-style:italic;
+  margin-bottom:16px;
 }
 .level-desc { font-size:19px; color:var(--text2); margin-bottom:20px; }
 .level-findings { display:flex; flex-wrap:wrap; gap:8px; }
-.finding-tag {
-  font-family:'Inter',sans-serif;
-  font-size:12px; padding:4px 12px; border-radius:20px;
-}
+.finding-tag { font-family:'Inter',sans-serif; font-size:12px; padding:4px 12px; border-radius:20px; }
 .ft-solid { background:rgba(26,122,110,0.1); color:var(--accent2); }
 .ft-new { background:rgba(74,60,200,0.08); color:var(--accent); }
 .ft-open { background:rgba(184,134,11,0.1); color:var(--accent3); }
-
-/* RESULTS */
 #results { background:var(--bg); }
 .results-intro { font-size:21px; color:var(--text2); margin-bottom:60px; max-width:720px; }
 .results-col-title {
   font-family:'Inter',sans-serif;
   font-size:13px; letter-spacing:0.15em; text-transform:uppercase;
-  margin-bottom:24px; padding-bottom:16px;
-  border-bottom:2px solid;
+  margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid;
 }
 .results-col-title.solid { color:var(--accent2); border-color:var(--accent2); }
 .results-col-title.observed { color:var(--accent3); border-color:var(--accent3); }
 .results-split { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
-
 .result-item { padding:24px 0; border-bottom:1px solid var(--border); }
 .result-item:last-child { border-bottom:none; }
 .result-item-title { font-size:21px; margin-bottom:8px; }
-.result-item-formula {
-  font-family:'JetBrains Mono',monospace;
-  font-size:14px; color:var(--accent);
-  margin-bottom:10px; line-height:1.8;
-}
+.result-item-formula { font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--accent); margin-bottom:10px; line-height:1.8; }
 .result-item-desc { font-size:17px; color:var(--text2); margin-bottom:8px; }
-.result-item-acc {
-  font-family:'Inter',sans-serif;
-  font-size:13px; font-weight:500;
-}
+.result-item-acc { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; }
 .result-item-acc.solid { color:var(--accent2); }
 .result-item-acc.observed { color:var(--accent3); }
-
-/* OPEN */
 #open { background:var(--bg2); }
 .open-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
-.open-card {
-  border:1px solid rgba(184,134,11,0.2); border-radius:12px;
-  padding:28px; background:var(--bg3);
-  box-shadow:0 1px 8px rgba(0,0,0,0.04);
-}
-.open-n {
-  font-family:'Inter',sans-serif; font-size:13px;
-  color:var(--accent3); margin-bottom:12px; font-weight:500;
-  letter-spacing:0.1em;
-}
+.open-card { border:1px solid rgba(184,134,11,0.2); border-radius:12px; padding:28px; background:var(--bg3); box-shadow:0 1px 8px rgba(0,0,0,0.04); }
+.open-n { font-family:'Inter',sans-serif; font-size:13px; color:var(--accent3); margin-bottom:12px; font-weight:500; letter-spacing:0.1em; }
 .open-title { font-size:20px; margin-bottom:10px; }
 .open-desc { font-size:16px; color:var(--text2); line-height:1.7; }
-
-/* CONTACT */
 #contact { background: var(--bg); border-top: 1px solid var(--border); }
 .contact-wrap { max-width: 640px; margin: 0 auto; }
-.contact-intro {
-  font-size: 21px; color: var(--text2);
-  margin-bottom: 52px; font-style: italic; max-width: 540px;
-}
+.contact-intro { font-size: 21px; color: var(--text2); margin-bottom: 52px; font-style: italic; max-width: 540px; }
 .cf-field { margin-bottom: 24px; }
-.cf-label {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 12px; letter-spacing: 0.18em;
-  color: var(--text3); text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.cf-input, .cf-textarea {
-  width: 100%;
-  padding: 14px 18px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  font-family: 'Lora', Georgia, serif;
-  font-size: 18px;
-  outline: none;
-  transition: border-color 0.25s, box-shadow 0.25s;
-}
-.cf-input:focus, .cf-textarea:focus {
-  border-color: rgba(74,60,200,0.45);
-  box-shadow: 0 0 0 3px rgba(74,60,200,0.07);
-}
+.cf-label { display: block; font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.18em; color: var(--text3); text-transform: uppercase; margin-bottom: 8px; }
+.cf-input, .cf-textarea { width: 100%; padding: 14px 18px; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Lora', Georgia, serif; font-size: 18px; outline: none; transition: border-color 0.25s, box-shadow 0.25s; }
+.cf-input:focus, .cf-textarea:focus { border-color: rgba(74,60,200,0.45); box-shadow: 0 0 0 3px rgba(74,60,200,0.07); }
 .cf-textarea { resize: vertical; line-height: 1.7; }
-.cf-btn {
-  width: 100%;
-  padding: 16px;
-  background: var(--accent);
-  border: none; border-radius: 8px;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.25s, transform 0.15s;
-}
+.cf-btn { width: 100%; padding: 16px; background: var(--accent); border: none; border-radius: 8px; color: #fff; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.25s, transform 0.15s; }
 .cf-btn:hover { background: #3a2db0; }
 .cf-btn:active { transform: scale(0.98); }
 .cf-btn:disabled { opacity: 0.6; cursor: default; }
-.cf-status {
-  margin-top: 20px;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  display: none;
-  padding: 14px;
-  border-radius: 8px;
-}
+.cf-status { margin-top: 20px; text-align: center; font-family: 'Inter', sans-serif; font-size: 14px; display: none; padding: 14px; border-radius: 8px; }
 .cf-status.ok { background: rgba(26,122,110,0.08); color: var(--accent2); }
 .cf-status.err { background: rgba(200,60,60,0.07); color: #c03c3c; }
-
-/* FOOTER */
-footer {
-  border-top:1px solid var(--border);
-  padding:80px 48px; text-align:center;
-  background:var(--bg3);
-}
-.footer-quote {
-  font-size:22px; font-style:italic; color:var(--text2);
-  max-width:640px; margin:0 auto 32px; line-height:1.7;
-}
-.footer-meta {
-  font-family:'Inter',sans-serif;
-  font-size:13px; color:var(--text3);
-}
-
-/* RESP */
-@media(max-width:960px) {
-  .hero-grid { grid-template-columns:1fr !important; text-align:center !important; }
-  .hero-grid > div { text-align:center !important; padding:0 !important; }
-}
-@media(max-width:860px) {
-  .results-split { grid-template-columns:1fr; }
-  .open-grid { grid-template-columns:1fr 1fr; }
-  nav { padding:12px 20px; }
-  section { padding:70px 24px; }
-}
-@media(max-width:540px) {
-  .open-grid { grid-template-columns:1fr; }
-  .nav-links { display:none; }
-}
+footer { border-top:1px solid var(--border); padding:80px 48px; text-align:center; background:var(--bg3); }
+.footer-quote { font-size:22px; font-style:italic; color:var(--text2); max-width:640px; margin:0 auto 32px; line-height:1.7; }
+.footer-meta { font-family:'Inter',sans-serif; font-size:13px; color:var(--text3); }
+@media(max-width:960px) { .hero-grid { grid-template-columns:1fr !important; text-align:center !important; } .hero-grid > div { text-align:center !important; padding:0 !important; } }
+@media(max-width:860px) { .results-split { grid-template-columns:1fr; } .open-grid { grid-template-columns:1fr 1fr; } nav { padding:12px 20px; } section { padding:70px 24px; } }
+@media(max-width:540px) { .open-grid { grid-template-columns:1fr; } .nav-links { display:none; } }
 </style>
 <script src="nav.js" defer></script>
 <script src="footer.js" defer></script>
@@ -379,34 +294,31 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:48px;align-items:center;width:100%;max-width:1100px;margin:0 auto;">
-
-    <!-- LEFT: quote -->
     <div style="text-align:right;padding-right:16px;">
       <p style="font-family:'Lora',Georgia,serif;font-size:19px;font-style:italic;color:#4a4a6a;line-height:1.8;margin-bottom:16px;">
         "The most incomprehensible thing about the universe is that it is comprehensible."
       </p>
       <p style="font-family:'Inter',sans-serif;font-size:13px;color:#8a8aaa;letter-spacing:0.1em;">— Albert Einstein</p>
     </div>
-
-    <!-- CENTER: logo -->
     <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
       <div class="hero-tag" style="margin-bottom:24px;">Conceptual Hypothesis · 2026</div>
       <img src="logo/logo_square.svg" alt="A Resonant Hierarchy of Everything" style="width:300px;max-width:300px;"/>
     </div>
-
-    <!-- RIGHT: annotation -->
     <div style="text-align:left;padding-left:16px;">
       <p style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.2em;color:#4a3cc8;text-transform:uppercase;margin-bottom:12px;">What this is</p>
       <p style="font-family:'Lora',Georgia,serif;font-size:17px;color:#4a4a6a;line-height:1.8;">
-        A conceptual framework proposing that all levels of reality — from subatomic vibrations to the universe itself — emerge through one recursive formula.
+        A personal conceptual exploration proposing that all levels of reality emerge through one recursive formula.
       </p>
       <p style="font-family:'Lora',Georgia,serif;font-size:17px;color:#4a4a6a;line-height:1.8;margin-top:12px;">
-        Not a finished theory. An invitation to think differently about the structure of everything.
+        Not a finished theory. The mathematics is incomplete. An invitation to think and to critique.
       </p>
     </div>
-
   </div>
-  <div class="hero-formula">P<sub>n+1</sub> = F(P<sub>n</sub>, C<sub>n</sub>, E<sub>n</sub>)</div>
+  <div class="hero-formula" style="margin-top:40px;">P<sub>n+1</sub> = F(P<sub>n</sub>, C<sub>n</sub>, E<sub>n</sub>)</div>
+  <!-- CHANGE 1: honest disclaimer added -->
+  <div class="hero-disclaimer">
+    This site presents a personal conceptual framework, not a formalised scientific theory. Several claims require stronger mathematical foundations. Criticism is welcome.
+  </div>
   <div class="hero-scroll">↓ explore</div>
 </section>
 
@@ -423,29 +335,28 @@ footer {
 
       <p>Yet a fundamental tension remains. <strong>The equations that govern the very small and the equations that govern the very large refuse to speak to each other.</strong> Quantum mechanics and general relativity are each extraordinarily precise within their domains — and mutually incompatible at their boundaries. The Standard Model catalogues matter with stunning accuracy but cannot tell us why the electron has the mass it has, why there are exactly three generations of particles, or why gravity is so incomparably weaker than all other forces.</p>
 
-      <p>We do not claim to have resolved these questions. What we offer here is a <strong>conceptual framework</strong> — a way of looking at reality as a single recursive structure in which each level of organisation emerges from the one below it, through one underlying principle of resonance and stability.</p>
-
-      <p>The universe, in this view, is not a collection of separate phenomena governed by separate laws. It is a hierarchy of resonances — vibrations that resonate into particles, particles into atoms, atoms into molecules, molecules into worlds, worlds into galaxies, galaxies into a cosmos that closes back on itself at the very level where it began.</p>
+      <p>What follows is a <strong>conceptual exploration</strong> — one person's attempt to look at reality as a single recursive structure in which each level of organisation emerges from the one below it. The idea is my own. The development was done in collaboration with AI. The mathematics is incomplete, and I know it.</p>
     </div>
 
+    <!-- CHANGE 2: callout softened — removed "Not postulated. Derived." -->
     <div class="callout">
-      <p><strong>The core claim:</strong> at every level of reality, the same structure appears — objects P, connections C, and emergent properties E. The properties of each level are not separate inputs to the theory. They are <strong>what the previous level's connections distinguish</strong> about the current level's objects: Eₙ = ∂Cₙ₋₁/∂Pₙ.</p>
+      <p><strong>The core conjecture:</strong> at every level of reality, the same structure appears — objects P, connections C, and emergent properties E. The hypothesis is that Eₙ = ∂Cₙ₋₁/∂Pₙ — the properties of each level might be understood as what the previous level's connections distinguish about the current level's objects. This gave qualitatively interesting results for levels 2–7, but has not been formally proved.</p>
     </div>
 
     <div class="formula-block">
-      <div class="formula-block-title">The Resonance Function F</div>
+      <div class="formula-block-title">The Resonance Function F — conceptual form</div>
       <div class="formula-line">F(Pₙ, Cₙ, Eₙ) =</div>
       <div class="formula-line" style="padding-left:24px">e<sup>−(Δf)²/2σ²</sup>  · frequency resonance</div>
       <div class="formula-line" style="padding-left:24px">· e<sup>−|∑D|²/2σ²</sup>  · directional closure</div>
       <div class="formula-line" style="padding-left:24px">· σ(C − C<sub>min</sub>)  · sufficient connectivity</div>
       <div class="formula-line" style="padding-left:24px">· e<sup>iΦ</sup>            · phase coherence</div>
-      <div class="formula-note">|F|² is the probability of a stable resonance forming at level N. Nature selects configurations where this is maximal — equivalent to the principle of least action. Unstable configurations decay; only resonant ones persist.</div>
+      <div class="formula-note">This form is written by analogy with known probability functions. The parameters σ and C<sub>min</sub> are not derived — they are the main open problem. F is a conceptual description, not a rigorous mathematical definition.</div>
     </div>
 
     <ul class="principles">
-      <li><strong>One formula, all levels</strong>The same function F governs the transition from quarks to protons, from atoms to molecules, from stars to galaxies. The constants change; the structure does not.</li>
-      <li><strong>Properties emerge from connections</strong>Colour charge, electric charge, spin, temperature, gravity — all are derived from the form of the previous level's connections. Not postulated separately. Derived.</li>
-      <li><strong>The recursion closes</strong>Level 11 is identical to Level 0. The universe begins and ends at the same point. Black holes are places where this closure happens locally, right now.</li>
+      <li><strong>One formula, all levels</strong>The same function F is proposed to govern transitions at all levels — from quarks to protons, from atoms to molecules, from stars to galaxies. Whether this is actually the case is what the hypothesis invites investigation of.</li>
+      <li><strong>Properties may emerge from connections</strong>Colour charge, electric charge, spin, temperature, gravity — the hypothesis suggests these are determined by the form of the previous level's connections. This is a conjecture, not a proof.</li>
+      <li><strong>The recursion closes</strong>Level 11 is proposed to be identical to Level 0. The universe begins and ends at the same point. This is the most speculative part of the framework.</li>
     </ul>
   </div>
 </section>
@@ -455,7 +366,7 @@ footer {
   <div class="container">
     <div class="section-tag">The Hierarchy</div>
     <div class="section-title">Twelve <em>Levels</em> of Reality</div>
-    <p class="levels-intro">From the vacuum — a medium with no objects but the potential for them — to the closure of the recursion at level 11. Click any level to expand.</p>
+    <p class="levels-intro">A conceptual sketch of how this framework applies at each scale. These descriptions are not mathematical derivations. Click any level to expand.</p>
     <div id="levelsContainer"></div>
   </div>
 </section>
@@ -464,15 +375,15 @@ footer {
 <section id="results">
   <div class="container">
     <div class="section-tag">Results</div>
-    <div class="section-title">What We <em>Found</em></div>
-    <p class="results-intro">Results fall into two distinct categories, and we distinguish them clearly. The first follows from the logic of the model. The second was found by numerical exploration and requires independent verification before any stronger claim can be made.</p>
+    <div class="section-title">What Seems <em>Interesting</em></div>
+    <p class="results-intro">Some things that emerged from exploring this framework. The left column contains conceptual ideas that follow from the logic of the model. The right column contains numerical observations found by pattern matching — they may be coincidental and require independent verification.</p>
     <div class="results-split">
       <div>
-        <div class="results-col-title solid">✓ Structural Results</div>
+        <div class="results-col-title solid">Conceptual Ideas</div>
         <div id="solidResults"></div>
       </div>
       <div>
-        <div class="results-col-title observed">★ Numerical Observations</div>
+        <div class="results-col-title observed">Numerical Observations</div>
         <div id="observedResults"></div>
       </div>
     </div>
@@ -483,8 +394,8 @@ footer {
 <section id="open">
   <div class="container">
     <div class="section-tag">Open Questions</div>
-    <div class="section-title">The <em>Frontier</em></div>
-    <p style="font-size:21px;color:var(--text2);max-width:700px">Honest science knows its limits. These questions remain open — in this model, and in modern physics. They are not weaknesses of the hypothesis. They are the next questions.</p>
+    <div class="section-title">What I Don't <em>Know</em></div>
+    <p style="font-size:21px;color:var(--text2);max-width:700px">These are the main gaps — some specific to this framework, some open problems in all of modern physics.</p>
     <div class="open-grid" id="openGrid"></div>
   </div>
 </section>
@@ -495,7 +406,6 @@ footer {
     <div class="section-tag">Contact</div>
     <div class="section-title">Share Your <em>Thoughts</em></div>
     <p class="contact-intro">Questions, critique, ideas — all welcome. This is a work in progress and every perspective matters.</p>
-
     <form id="contactForm" novalidate>
       <div class="cf-field">
         <label class="cf-label" for="cf-name">Name</label>
@@ -521,63 +431,64 @@ footer {
 const levels = [
   { n:0, name:"The Medium", sub:"vacuum / potential", color:"#888780",
     pce:"P₀ = no objects\nC₀ = no connections\nE₀ = pure potential",
-    desc:"Not empty space, but an active medium capable of sustaining vibrations. The Casimir effect demonstrates that the vacuum carries real energy — two metal plates in a vacuum attract each other due to quantum fluctuations. All levels emerge from this medium, and the final level returns to it.",
-    findings:[{t:"ft-solid",text:"Vacuum is active — Casimir effect confirmed"},{t:"ft-new",text:"P₁₁ = P₀ — the recursion closes here"}]
+    desc:"Not empty space, but an active medium capable of sustaining vibrations. The Casimir effect demonstrates that the vacuum carries real energy. All levels emerge from this medium, and the final level returns to it.",
+    findings:[{t:"ft-solid",text:"Vacuum is active — Casimir effect confirmed"},{t:"ft-new",text:"Conjecture: P₁₁ = P₀ — recursion closes here"}]
   },
   { n:1, name:"The Primordial Vibration", sub:"the minimal 'particle'", color:"#7F77DD",
     pce:"V = (f, A, D, Φ)\nC₁ = frequency resonance\nE₁ = (f, A, D, Φ) — 4 parameters",
-    desc:"A particle is not a thing in space — it is a vibration. Without oscillation, it ceases to exist. The four parameters of a vibration (frequency, amplitude, direction, phase) correspond naturally to the four dimensions of spacetime. Three spatial dimensions give rise to three components of direction D — which, at the next level, become the three colour charges of quarks.",
-    findings:[{t:"ft-solid",text:"No vibration = no particle"},{t:"ft-solid",text:"4 parameters = 3D + time"},{t:"ft-new",text:"√mass ~ amplitude A (Koide interpretation)"}]
+    desc:"A particle is not a thing in space — it is a vibration. Without oscillation, it ceases to exist. The four parameters of a vibration (frequency, amplitude, direction, phase) correspond naturally to the four dimensions of spacetime.",
+    findings:[{t:"ft-solid",text:"No vibration = no particle (standard QFT)"},{t:"ft-solid",text:"4 parameters = 3D + time"},{t:"ft-new",text:"Idea: √mass ~ amplitude A"}]
   },
   { n:2, name:"Quarks & Gluons", sub:"level 2", color:"#1D9E75",
     pce:"P₂ = ∑V where ∑f = const, ∑D = 0\nC₂ = k·r (grows with distance)\nE₂ = (r, g, b) — colour charge",
-    desc:"Three vibrations whose direction vectors sum to zero form a stable resonance. In three-dimensional space, three is the minimum number of vectors that can form a rigid closed configuration — a triangle. This is not separately postulated: it follows from the closure condition ∑D = 0 in 3D. This is why the proton has exactly three quarks. Confinement — the impossibility of isolating a quark — follows from the linear growth of C₂ with distance.",
-    findings:[{t:"ft-solid",text:"Three quarks from ∑D=0 in 3D — mathematical fact"},{t:"ft-solid",text:"Confinement from C₂ = k·r"},{t:"ft-new",text:"αs = α·9·(e+2) — 97% accuracy"}]
+    desc:"Three vibrations whose direction vectors sum to zero form a stable resonance. In three-dimensional space, three is the minimum number of vectors that can form a rigid closed configuration. This is a mathematical fact about vectors in 3D — and it suggests a geometric reason why the proton has exactly three quarks.",
+    findings:[{t:"ft-solid",text:"3 quarks from ∑D=0 in 3D — mathematical fact"},{t:"ft-solid",text:"Confinement from C₂ = k·r — qualitative"},{t:"ft-new",text:"Numerical: αs ≈ α·9·(e+2) — 97%"}]
   },
   { n:3, name:"Protons & Neutrons", sub:"~90% accuracy", color:"#D85A30",
     pce:"P₃ = {P₂a, P₂b, P₂c}\nC₃ = k·e^(−r) — short range\nE₃ = (m, q) — mass and charge",
-    desc:"Mass is not an intrinsic property of quarks — it emerges from confinement energy. The proton's 938 MeV comes almost entirely from the energy stored in the gluon field binding three quarks whose combined rest mass is only 9 MeV. The proton–neutron mass difference (1.3 MeV) is derived exactly from the quark mass difference. The model predicts 850 MeV for the proton mass — about 90% accuracy without parameter fitting.",
-    findings:[{t:"ft-solid",text:"99% of proton mass from C₂ binding energy"},{t:"ft-solid",text:"p/n mass difference derived exactly: 1.3 MeV"},{t:"ft-new",text:"m_u = m_e·e^(3/2), m_d = m_e·e^(9/4)"}]
+    desc:"Most of a proton's mass (938 MeV) comes from gluon binding energy, not from quark rest masses (9 MeV combined). This is standard QCD. The proton–neutron mass difference follows from quark mass differences. The framework predicts ~850 MeV — about 90% accuracy.",
+    findings:[{t:"ft-solid",text:"99% of proton mass from binding energy (standard QCD)"},{t:"ft-solid",text:"p/n mass difference from quark masses — exact"},{t:"ft-new",text:"Numerical: m_u ≈ m_e·e^(3/2), m_d ≈ m_e·e^(9/4)"}]
   },
   { n:4, name:"Atoms", sub:"structure confirmed", color:"#D4537E",
     pce:"P₄ = nucleus + electrons\nC₄ = k·q₁q₂/r² — electromagnetism\nE₄ = (shell, valence) — Ω₄ = e",
-    desc:"The atom is stable because its net charge is zero — a direct consequence of the closure condition ∑q = 0. The Pauli exclusion principle emerges naturally from phase antisymmetry in F: two identical fermions in the same state give F = 0, making the configuration impossible. No separate postulate. The number of stable configurations of an atom in its ground state is Ω₄ = e (Euler's number), which appears in the derivation of coupling constants.",
-    findings:[{t:"ft-solid",text:"∑q=0 explains equality of electron and proton charges"},{t:"ft-solid",text:"Pauli exclusion from phase antisymmetry e^(iΔΦ)"},{t:"ft-new",text:"1/α ≈ 1152/(π·e) — 98.5%"},{t:"ft-new",text:"αw = α·(e+2) — 99.1%"}]
+    desc:"The atom is stable because its net charge is zero — a direct consequence of the closure condition. The Pauli exclusion principle can be understood as a consequence of phase antisymmetry in F. This is an analogy with the standard derivation, not a proof.",
+    findings:[{t:"ft-solid",text:"∑q=0 explains charge equality"},{t:"ft-new",text:"Idea: Pauli exclusion from phase antisymmetry"},{t:"ft-new",text:"Numerical: 1/α ≈ 1152/(π·e) — 98.5%"}]
   },
   { n:5, name:"Molecules", sub:"~95% accuracy", color:"#BA7517",
     pce:"P₅ = {P₄a, P₄b, ...}\nC₅ = f(valence, electronegativity)\nE₅ = (bond type, angle, length)",
-    desc:"Shared electrons form covalent bonds. The geometry of molecular bonds — angles, lengths, types — follows from the electromagnetic connection C₄. The Koide formula for lepton masses (known since 1982 and accurate to 99.97%) finds a natural interpretation in this framework: the square root of a particle's mass is proportional to the amplitude of its underlying vibration. An extended version of Koide's formula applies to quarks with a correction involving the strong coupling constant.",
-    findings:[{t:"ft-solid",text:"Bond geometry from C₄"},{t:"ft-new",text:"mτ·me = mμ²/4π — 98%"},{t:"ft-new",text:"Generalised Koide: k = 3/2·(1−|q|·αs)"}]
+    desc:"Molecular geometry follows from electromagnetic connections between atoms. The Koide formula (1982) — an empirical relation between lepton masses accurate to 99.97% — finds a possible interpretation here if √mass ~ vibration amplitude. This is speculative.",
+    findings:[{t:"ft-new",text:"Idea: Koide formula as amplitude relation"},{t:"ft-new",text:"Numerical: mτ·me ≈ mμ²/4π — 98%"}]
   },
-  { n:6, name:"Matter", sub:"~100% accuracy", color:"#185FA5",
+  { n:6, name:"Matter", sub:"uses experimental data", color:"#185FA5",
     pce:"P₆ = {P₅} × 10²³\nC₆ = intermolecular forces\nE₆ = (T, S) — temperature and entropy",
-    desc:"Temperature is the mean amplitude of molecular vibrations. The three states of matter are three ranges of this amplitude: solid (low), liquid (medium), gas (high). Phase transitions occur precisely when thermal energy equals the connection energy — T·ΔS = ΔH. This condition correctly predicts the boiling point of water at 373 K and its freezing point at 273 K, with no free parameters.",
-    findings:[{t:"ft-solid",text:"Boiling point of water 373 K — exact"},{t:"ft-solid",text:"Freezing point 273 K — exact"},{t:"ft-solid",text:"Universal phase transition condition: T·ΔS = ΔH"}]
+    // CHANGE 3: honest description of water — removed "no free parameters"
+    desc:"Temperature is the mean kinetic energy of molecular motion. Phase transitions follow the standard thermodynamic condition T·ΔS = ΔH. The values for water (373 K boiling, 273 K freezing) are recovered using experimentally measured ΔH and ΔS — they are not predicted from first principles within this framework.",
+    findings:[{t:"ft-new",text:"Framework: temperature as mean vibration amplitude"},{t:"ft-open",text:"Note: T·ΔS=ΔH uses experimental ΔH and ΔS — not a first-principles prediction"}]
   },
   { n:7, name:"Planets & Stars", sub:"qualitatively confirmed", color:"#3B6D11",
     pce:"P₇ = {P₆} × 10⁵⁷\nC₇ = G·m₁m₂/r² — gravity\nE₇ = G + Depth",
-    desc:"Gravity becomes dominant when accumulated mass overwhelms molecular forces. The minimum mass at which gravity dominates is approximately 10²³ kg — consistent with the mass of the Moon. Stars are objects in which gravitational compression reactivates nuclear resonance (level 3 physics) inside a level 7 object. We introduce the concept of Depth: the deepest level of physics that is active inside an object. Black holes reach Depth = 0, returning to the pure potential of the medium.",
-    findings:[{t:"ft-solid",text:"Minimum planet mass ~10²³ kg — correct order of magnitude"},{t:"ft-new",text:"Depth: Planet=6, Star=3, Neutron star=2, Black hole=0"},{t:"ft-new",text:"Black holes: local closure of the recursion, returning to level 0"}]
+    desc:"Gravity dominates when accumulated mass overwhelms molecular forces. The minimum mass for gravitational dominance is approximately 10²³ kg — consistent with the Moon's mass. Stars reactivate nuclear physics (level 3) through compression. 'Depth' is a conceptual idea, not a derived quantity.",
+    findings:[{t:"ft-new",text:"Idea: minimum planet mass from force balance"},{t:"ft-new",text:"Idea: Depth — activation of lower levels under extreme conditions"},{t:"ft-open",text:"G not derived from the framework"}]
   },
   { n:8, name:"Galaxies", sub:"dark matter open", color:"#533AB7",
     pce:"P₈ = {P₇} × 10¹¹\nC₈ = C₇ + C_dark\nE₈ = (G_eff, J, structure)",
-    desc:"The flat rotation curves of galaxies — stars orbiting at the same speed regardless of distance from the centre — require more mass than is visible. In this framework, dark matter is matter whose resonance configuration has no electromagnetic component (E₂ = 0, E₃(q) = 0) but retains mass (E₃(m) ≠ 0). It gravitates but does not emit or absorb light. Spiral arms are understood as standing resonance waves in the galaxy-level system.",
-    findings:[{t:"ft-solid",text:"Flat rotation curves — observed fact"},{t:"ft-solid",text:"Spiral arms as resonance waves"},{t:"ft-new",text:"Dark matter: E₂=0, E₃(q)=0, E₃(m)≠0"}]
+    desc:"Galaxy rotation curves require more mass than is visible — an observed fact. The framework suggests dark matter might be a resonance with no electromagnetic component. This restates the standard WIMP hypothesis in different language; it is not an independent prediction.",
+    findings:[{t:"ft-solid",text:"Flat rotation curves — observed fact"},{t:"ft-new",text:"Idea: dark matter as non-EM resonance configuration"},{t:"ft-open",text:"Dark matter mass not predicted"}]
   },
-  { n:9, name:"The Universe", sub:"Λ not yet derived", color:"#3C3489",
+  { n:9, name:"The Universe", sub:"Λ not derived", color:"#3C3489",
     pce:"P₉ = {P₈} × 10¹²\nC₉ = −Λ·r — dark energy (repulsive)\nE₉ = Λ = f(E₀)",
-    desc:"The connection at this level is repulsive — dark energy pushes everything apart, and its strength grows with distance. The flat geometry of the universe (Ω = 1) follows directly from the closure condition ∑D = 0 applied at the largest scale, matching observational data. The equation E₉ = f(E₀) closes the recursion: the universe's expansion energy traces back to the energy of the vacuum medium at level 0.",
-    findings:[{t:"ft-solid",text:"Flat geometry Ω=1 from ∑D=0 — matches CMB data"},{t:"ft-new",text:"Seesaw mechanism: m_light · M_heavy = v²"},{t:"ft-new",text:"Predicted neutrino mass: mν₁ ≈ 1.3×10⁻⁴ eV"}]
+    desc:"The flat geometry of the universe (Ω ≈ 1) follows from the closure condition ∑D = 0 — this matches observational data and is the strongest cosmological result in the framework. The value of Λ is not derived; the cosmological constant problem remains unsolved.",
+    findings:[{t:"ft-solid",text:"Flat geometry Ω≈1 from ∑D=0 — matches CMB data"},{t:"ft-new",text:"Numerical: seesaw m_light·M_heavy = v²"},{t:"ft-open",text:"Value of Λ not derived (cosmological constant problem)"}]
   },
-  { n:10, name:"The Multiverse", sub:"prediction from recursion", color:"#555550",
-    pce:"P₁₀ = {P₉, P₉, ...}\nC₁₀ = Ω — very weak, attractive\nE₁₀ = Ω",
-    desc:"If the recursion continues beyond our observable universe, individual universes are objects at level 10. The connection between them would be extraordinarily weak — but might leave a detectable signature as a slight asymmetry in the distribution of dark energy across the sky. The CMB data from the Planck telescope shows unexplained large-scale anomalies that are at least consistent with this prediction.",
-    findings:[{t:"ft-new",text:"Λ asymmetry as signature of C₁₀"},{t:"ft-open",text:"Not experimentally testable today — prediction only"}]
+  { n:10, name:"The Multiverse", sub:"speculation only", color:"#555550",
+    pce:"P₁₀ = {P₉, ...}\nC₁₀ = Ω — very weak\nE₁₀ = Ω",
+    desc:"If the recursion continues, individual universes might be objects at the next level. This is pure speculation included for structural completeness. It makes no testable predictions today.",
+    findings:[{t:"ft-open",text:"Speculation only — no testable predictions"}]
   },
   { n:11, name:"Closure", sub:"identical to level 0", color:"#3a3a38",
     pce:"P₁₁ = P₀\nC₁₁ = 0\nE₁₁ = 0 = E₀",
-    desc:"The final level is identical to the first. A system with no external parameters, no connections, no emergent properties — pure potential. The universe does not end; it returns to where it began. Black holes are places where this return happens locally, right now, without waiting for the end of cosmic time. Hawking radiation is the reverse process: the vacuum potential spontaneously generating new vibrations at the horizon.",
-    findings:[{t:"ft-solid",text:"P₁₁ = P₀ — the recursion closes"},{t:"ft-new",text:"Hawking radiation = local restart: E₀ → E₁"}]
+    desc:"The final level is proposed to be identical to the first — pure potential, no connections, no emergent properties. The recursion closes. Whether this reflects something real about nature is unknown.",
+    findings:[{t:"ft-new",text:"Conjecture: P₁₁ = P₀ — recursion closes"},{t:"ft-new",text:"Idea: black holes as local closure"}]
   },
 ];
 
@@ -597,6 +508,7 @@ levels.forEach(lv => {
     </div>
     <div class="level-body">
       <div class="level-pce">${lv.pce}</div>
+      <div class="level-pce-note">Conceptual description — not a mathematical definition.</div>
       <p class="level-desc">${lv.desc}</p>
       <div class="level-findings">${findings}</div>
     </div>`;
@@ -610,55 +522,47 @@ function toggleLevel(header) {
   chevron.classList.toggle('open');
 }
 
-// RESULTS
+// RESULTS — CHANGE 4: renamed columns, water result fixed
 const solid = [
   { title:"Three quarks from geometry",
     formula:"∑D = 0 in 3D → minimum 3 vectors",
-    desc:"Three is the minimum number of vectors that can form a rigid closed configuration in three-dimensional space. The proton has exactly three quarks — not a separate postulate but a geometric necessity.",
-    acc:"Mathematical fact" },
+    desc:"In three-dimensional space, three is the minimum number of vectors that can form a rigid closed configuration. This is a mathematical fact — it suggests a geometric reason for the three-quark structure of the proton.",
+    acc:"Mathematical fact about 3D vectors" },
   { title:"Pauli exclusion from phase",
     formula:"ΔΦ = 0 → F = 0 (forbidden state)",
-    desc:"The Pauli exclusion principle for two identical fermions follows automatically from phase antisymmetry in F. No separate postulate required.",
-    acc:"Structural result" },
-  { title:"Phase transitions of water",
+    desc:"If the resonance function includes a phase factor, two identical fermions in the same state give F = 0. This is an analogy with the standard derivation from wave function antisymmetry, not an independent proof.",
+    acc:"Conceptual analogy — not a proof" },
+  { title:"Phase transition condition",
     formula:"T · ΔS = ΔH",
-    desc:"Boiling (373 K) and freezing (273 K) of water derived exactly from a universal phase transition condition. Works for all substances with no free parameters.",
-    acc:"Exact — no free parameters" },
-  { title:"Emergent properties from connections",
+    desc:"This is standard thermodynamics. Applied to water using experimentally measured ΔH and ΔS, it gives 373 K (boiling) and 273 K (freezing). The values are not predicted from first principles — they use measured inputs.",
+    acc:"Standard thermodynamics with experimental inputs" },
+  { title:"Emergent properties conjecture",
     formula:"Eₙ = ∂Cₙ₋₁ / ∂Pₙ",
-    desc:"Colour charge (from direction vectors), mass and electric charge (from confinement), spin (from orbital discretisation), temperature (from molecular averaging), gravity (from mass accumulation) — all derived from connection forms. Verified for levels 2–9.",
-    acc:"Levels 2–9 confirmed" },
-  { title:"Carriers encode level properties",
-    formula:"Quantum of Cₙ carries Eₙ",
-    desc:"Gluons carry colour (E₂), photons carry charge (E₃), W/Z bosons carry isospin (E₄), gravitons couple to energy-momentum (E₇). This follows from the recursive structure — not a separate postulate.",
-    acc:"Structural result" },
+    desc:"The hypothesis that emergent properties at each level are determined by the form of the previous level's connections. Gave qualitatively interesting results for levels 2–7. Not formally proved.",
+    acc:"Conjecture — qualitatively explored, not proved" },
 ];
 
 const observed = [
   { title:"Fine structure constant",
     formula:"1/α ≈ 1152 / (π · e) = 134.9",
-    desc:"Approximation through the product of level degeneracies (Ω₁·Ω₂·Ω₃·2 / Ω₄). Found by numerical exploration. Difference from 137: 1.5%.",
-    acc:"~98.5% accuracy" },
-  { title:"Coupling constant hierarchy",
-    formula:"αw = α·(e+2)\nαs = α · 9 · (e+2)",
-    desc:"All three coupling constants related through α and (e+2), the vacuum partition function. The ratio αs/αw = 9 = N_colour² follows from SU(3) vs SU(2). Found numerically.",
-    acc:"97–99% accuracy" },
+    desc:"Found by numerical exploration. Worse than simply noting 1/α ≈ 137. Included for transparency.",
+    acc:"Pattern matching — weaker than known approximations" },
+  { title:"Coupling constant relations",
+    formula:"αw ≈ α·(e+2)\nαs ≈ α·9·(e+2)",
+    desc:"Relations between coupling constants found numerically. The ratio αs/αw = 9 follows from N_colour². The factor (e+2) has a proposed interpretation but no rigorous derivation.",
+    acc:"Pattern matching — 97–99% accuracy" },
   { title:"Generalised Koide formula",
-    formula:"k = (√m₁+√m₂+√m₃)² / (m₁+m₂+m₃)\n= 3/2 · (1 − |q| · αs)",
-    desc:"Koide's 1982 formula for leptons (99.97% accurate, mechanism unknown) extended to quarks via electric charge and αs. Works well for down-type quarks (~95%). Requires independent verification.",
-    acc:"Leptons 99.97%, Down ~95%, Up ~85%" },
-  { title:"Lepton generation mass ratios",
-    formula:"mτ · me = mμ² / 4π",
-    desc:"Three lepton generations connected by the geometric factor 4π — the surface area of a unit sphere in 3D. Mechanism conceptual; found by pattern matching.",
-    acc:"~98% accuracy" },
+    formula:"k = 3/2·(1−|q|·αs)",
+    desc:"Koide's 1982 formula (lepton masses, 99.97% accurate) extended to quarks via charge and αs. Works for down-type quarks (~95%). Found by pattern matching; requires independent verification.",
+    acc:"Leptons exact (Koide 1982); quarks ~85–95%" },
+  { title:"Lepton mass relation",
+    formula:"mτ·me ≈ mμ²/4π",
+    desc:"A numerical relation between lepton masses involving 4π. Found by pattern matching. May be a consequence of the Koide formula plus an approximation.",
+    acc:"Pattern matching — ~98% accuracy" },
   { title:"Higgs boson mass",
-    formula:"M_H = M_Z · e^(1/N_colour) ≈ 127 GeV",
-    desc:"Higgs mass related to Z mass via the number of colour charges. Numerical observation; the derivation mechanism is not established.",
-    acc:"~98.4% accuracy" },
-  { title:"Neutrino mass prediction",
-    formula:"m_ν₁ · M_R₁ = v²  →  mν₁ ≈ 1.3×10⁻⁴ eV",
-    desc:"Seesaw mechanism interpreted as level-crossing resonance. Predicts the lightest neutrino mass. Testable by ongoing KATRIN experiment.",
-    acc:"Prediction — not yet verified" },
+    formula:"M_H ≈ M_Z·e^(1/N_colour) ≈ 127 GeV",
+    desc:"Numerical observation. No derivation mechanism. Actual value 125.25 GeV.",
+    acc:"Pattern matching — ~98% accuracy" },
 ];
 
 document.getElementById('solidResults').innerHTML = solid.map(r => `
@@ -677,19 +581,20 @@ document.getElementById('observedResults').innerHTML = observed.map(r => `
     <div class="result-item-acc observed">${r.acc}</div>
   </div>`).join('');
 
+// OPEN — CHANGE 5: added formalisation and complexity theory
 const opens = [
-  { n:"01", title:"The origin of vibration",
-    desc:"E₁ = (f, A, D, Φ) is the single input parameter of the entire model. Where the first vibration comes from — the question the recursion cannot answer from within itself." },
+  { n:"01", title:"Mathematical formalisation of F",
+    desc:"The resonance function F is described conceptually. It has no rigorous mathematical definition — the parameters are not derived. This is the most important gap. Without it, no concrete predictions can be made." },
   { n:"02", title:"α = 1/137",
-    desc:"Our approximation 1152/(π·e) = 134.9 reaches 98.5%. The exact derivation of the fine structure constant from first principles remains open in this model and in all of physics." },
-  { n:"03", title:"The Higgs scale",
-    desc:"Why the Higgs field has this particular vacuum value v = 246 GeV — the hierarchy problem, one of the deepest open questions in particle physics." },
-  { n:"04", title:"Dark matter identity",
-    desc:"The framework predicts dark matter as a resonance configuration with no electromagnetic component. The specific mass of the dark matter particle does not emerge from the model." },
-  { n:"05", title:"Exact generation masses",
-    desc:"The attenuation mechanism gives qualitative reasoning for three generations. Deriving the exact masses from first principles within the model remains open." },
-  { n:"06", title:"Mathematical formalisation",
-    desc:"F is described conceptually. A rigorous Lagrangian formulation within quantum field theory — with renormalisability and exact equations of motion — is the essential next step." },
+    desc:"The fine structure constant is not explained by this framework. The approximation found numerically (134.9) is worse than simply writing 137. Open in all of physics." },
+  { n:"03", title:"Why three spatial dimensions",
+    desc:"The framework uses 3D throughout but does not explain why space has three dimensions. The argument that 3 is the minimum for rigid closure is suggestive, not a derivation." },
+  { n:"04", title:"Particle masses",
+    desc:"Quark and lepton masses are taken from experiment. The framework does not predict them. Numerical relations found by pattern matching may or may not reflect real structure." },
+  { n:"05", title:"The Higgs scale",
+    desc:"Why v = 246 GeV — the hierarchy problem. One of the deepest open questions in particle physics, unresolved here." },
+  { n:"06", title:"Connection to complexity theory",
+    desc:"Complexity theory studies emergent behaviour through connections between components at different levels of abstraction — a related and more mathematically developed field worth exploring in this context." },
 ];
 
 document.getElementById('openGrid').innerHTML = opens.map(o => `
@@ -699,7 +604,7 @@ document.getElementById('openGrid').innerHTML = opens.map(o => `
     <div class="open-desc">${o.desc}</div>
   </div>`).join('');
 
-// CONTACT FORM
+// CONTACT
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn = document.getElementById('cf-submit');
@@ -707,33 +612,26 @@ document.getElementById('contactForm').addEventListener('submit', async function
   const name = document.getElementById('cf-name').value.trim();
   const email = document.getElementById('cf-email').value.trim();
   const message = document.getElementById('cf-message').value.trim();
-
   if (!name || !email || !message) return;
-
   btn.textContent = 'Sending…';
   btn.disabled = true;
   status.style.display = 'none';
   status.className = 'cf-status';
-
   try {
     const res = await fetch('https://contact-form.hierarchyofeverything.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, message })
     });
-
     if (res.ok) {
       status.textContent = '✓ Message sent. Thank you — every response matters.';
       status.classList.add('ok');
       document.getElementById('contactForm').reset();
-    } else {
-      throw new Error();
-    }
+    } else { throw new Error(); }
   } catch {
     status.textContent = '✗ Something went wrong. Please try again or email directly.';
     status.classList.add('err');
   }
-
   status.style.display = 'block';
   btn.textContent = 'Send Message';
   btn.disabled = false;
